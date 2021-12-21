@@ -1,0 +1,111 @@
+<app-statistiques></app-statistiques>
+
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="card-header bg-transparent pb-5" >
+
+                        <span class="text-center">
+                            <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-8">
+                                <span class="btn-inner--text" routerLink="/addVoyage">Ajouter un voyage</span>
+                            </a>
+                        </span>
+                        <span class="text-center">
+                          <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-8">
+                            <span class="btn-inner--text" (click)="exportAsXLSX()">Exporter Les donnees</span>
+                          </a>
+                        </span>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Nom Voyage</th>
+                                    <th scope="col">Ligne</th>
+                                    <th scope="col">Heure depart</th>
+                                    <th scope="col">Heure arrive</th>
+                                    <th scope="col">Date de creation</th>
+                                    <th scope="col">Action</th>
+                      
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let voyage of voyages">
+                                <th scope="row">
+                                   <div class="media align-items-center">
+                                     <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                       <img alt="Image placeholder" src="../assets/img/theme/s.png">
+                                     </a>
+                                     <div class="media-body">
+                                       <span class="mb-0 text-sm">{{ voyage.nom_voyage }}</span>
+                                     </div>
+                                   </div>
+                                 </th>
+                                 <td>
+                                {{ voyage.id_ligne }}
+                                 </td>
+                                 <td>
+                                   <span class="badge badge-dot mr-4">
+                                   {{   voyage.heure_de_depart }}
+                                   </span>
+                                 </td>
+                                
+                                 <td>
+                                   <div class="d-flex align-items-center">
+                                 <span class="mr-2">{{ voyage.heure_arrive }}</span>
+                                    
+                                   </div>
+                                 </td>
+                                 <td>
+                                   <div class="d-flex align-items-center">
+                                 <span class="mr-2">{{ voyage.created_at }}</span>
+                                    
+                                   </div>
+                                 </td>
+                                 <td class="text-right">
+                                   <button type="button" class="btn btn-danger" (click)="deletevoyage( voyage.id_voyage)">Supprimer</button>
+                                   <button type="button" class="btn btn-success"  routerLink="/updatevoyage/{{ voyage.id_voyage }}">Modifier</button>
+                        
+                                 </td>
+                               
+                             </tr>
+                           
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer py-4">
+                        <nav aria-label="...">
+                            <ul class="pagination justify-content-end mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                                        <i class="fas fa-angle-left"></i>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="javascript:void(0)">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="javascript:void(0)">2 <span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="javascript:void(0)">
+                                        <i class="fas fa-angle-right"></i>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
